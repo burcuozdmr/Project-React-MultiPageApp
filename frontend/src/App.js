@@ -3,7 +3,7 @@ import HomePage from "./pages/HomePage";
 import EventDetailPage from "./pages/EventDetailPage";
 import EditEventPage from "./pages/EditEventPage";
 import NewEventPage from "./pages/NewEventPage";
-import EventsPage from "./pages/EventsPage";
+import EventsPage, {loader as eventsLoader }from "./pages/EventsPage";
 import Root from "./pages/Root";
 import EventRoot from "./pages/EventRoot";
 
@@ -17,7 +17,11 @@ const router = createBrowserRouter([
         path: "events",
         element: <EventRoot />,
         children: [
-          { index: true, element: <EventsPage /> },
+          {
+            index: true,
+            element: <EventsPage />,
+            loader: eventsLoader 
+          },
           { path: ":eventId", element: <EventDetailPage /> },
           { path: "new", element: <NewEventPage /> },
           { path: ":eventId/edit", element: <EditEventPage /> },
